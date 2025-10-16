@@ -18,7 +18,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { getListJsonMarcas, getListMarcas } from './swagger/marcas.swagger';
+import { createrMarcas, getListJsonMarcas, getListMarcas, updateMarcas } from './swagger/marcas.swagger';
 import { CreateMarcaDto } from './dto/create-marca.dto';
 import { UpdateMarcaDto } from './dto/update-marca.dto';
 import { MarcasSearchDto } from './dto/marcasSearch.dtos';
@@ -60,7 +60,7 @@ export class MarcasController {
   @ApiOperation({ summary: 'Cadastro uma nova marcadas' })
   @ApiResponse({
     status: 200,
-    ...getListJsonMarcas,
+    ...createrMarcas,
   })
   @ApiUnauthorizedResponse({
     description: 'Não autorizado',
@@ -73,7 +73,7 @@ export class MarcasController {
   @ApiOperation({ summary: 'Atualiza uma marcadas existente' })
   @ApiResponse({
     status: 200,
-    ...getListJsonMarcas,
+    ...updateMarcas,
   })
   @ApiUnauthorizedResponse({
     description: 'Não autorizado',

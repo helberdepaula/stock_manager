@@ -19,9 +19,14 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
+    '/categorias/': RouteRecordInfo<'/categorias/', '/categorias', Record<never, never>, Record<never, never>>,
     '/estoque': RouteRecordInfo<'/estoque', '/estoque', Record<never, never>, Record<never, never>>,
-    '/fornecedores': RouteRecordInfo<'/fornecedores', '/fornecedores', Record<never, never>, Record<never, never>>,
+    '/fornecedores': RouteRecordInfo<'/fornecedores', '/fornecedores', Record<never, never>, Record<never, never>, '/fornecedores/' | '/fornecedores/fornecedoresEdit' | '/fornecedores/fornecedoresNew'>,
+    '/fornecedores/': RouteRecordInfo<'/fornecedores/', '/fornecedores', Record<never, never>, Record<never, never>>,
+    '/fornecedores/fornecedoresEdit': RouteRecordInfo<'/fornecedores/fornecedoresEdit', '/fornecedores/fornecedoresEdit', Record<never, never>, Record<never, never>>,
+    '/fornecedores/fornecedoresNew': RouteRecordInfo<'/fornecedores/fornecedoresNew', '/fornecedores/fornecedoresNew', Record<never, never>, Record<never, never>>,
     '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
+    '/marcas/': RouteRecordInfo<'/marcas/', '/marcas', Record<never, never>, Record<never, never>>,
     '/produtos': RouteRecordInfo<'/produtos', '/produtos', Record<never, never>, Record<never, never>>,
   }
 
@@ -40,16 +45,36 @@ declare module 'vue-router/auto-routes' {
       routes: '/'
       views: never
     }
+    'src/pages/categorias/index.vue': {
+      routes: '/categorias/'
+      views: never
+    }
     'src/pages/estoque.vue': {
       routes: '/estoque'
       views: never
     }
     'src/pages/fornecedores.vue': {
-      routes: '/fornecedores'
+      routes: '/fornecedores' | '/fornecedores/' | '/fornecedores/fornecedoresEdit' | '/fornecedores/fornecedoresNew'
+      views: 'default'
+    }
+    'src/pages/fornecedores/index.vue': {
+      routes: '/fornecedores/'
+      views: never
+    }
+    'src/pages/fornecedores/fornecedoresEdit.vue': {
+      routes: '/fornecedores/fornecedoresEdit'
+      views: never
+    }
+    'src/pages/fornecedores/fornecedoresNew.vue': {
+      routes: '/fornecedores/fornecedoresNew'
       views: never
     }
     'src/pages/login.vue': {
       routes: '/login'
+      views: never
+    }
+    'src/pages/marcas/index.vue': {
+      routes: '/marcas/'
       views: never
     }
     'src/pages/produtos.vue': {

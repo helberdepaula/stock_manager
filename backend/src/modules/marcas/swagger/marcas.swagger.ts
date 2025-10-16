@@ -44,3 +44,39 @@ export const getListMarcas: ApiResponseOptions = {
     },
   },
 };
+
+export const createrMarcas: ApiResponseOptions = {
+  description: 'Marca criada com sucesso',
+  content: {
+    'application/json': {
+      example: {
+        message: 'Marca criada com sucesso',
+        data: {
+          nome: 'cadstloess',
+          createdAt: '2025-10-15T19:55:09.986Z',
+          updatedAt: '2025-10-15T19:55:09.986Z',
+          id: 3,
+          status: 'ACTIVE',
+        },
+      },
+    },
+  },
+};
+
+export const updateMarcas: ApiResponseOptions = {
+  description: 'Marca Atualizada com sucesso',
+  content: {
+    'application/json': {
+      example: {
+        message: 'Marca Atualizada com sucesso',
+        data: {
+          nome: 'cadstloess',
+          createdAt: '2025-10-15T19:55:09.986Z',
+          updatedAt: '2025-10-15T19:55:09.986Z',
+          id: 3,
+          status: 'ACTIVE',
+        },
+      },
+    },
+  },
+};

@@ -36,8 +36,8 @@ export class MarcasService {
         'Já existe uma marca com esse nome cadastrado no banco de dados',
       ]);
     }
-    await this.marcasRepository.createNew(data);
-    return { message: 'Marca criada com sucesso' };
+    const result = await this.marcasRepository.createNew(data);
+    return { message: 'Marca criada com sucesso', data: result };
   }
 
   @Transactional()
@@ -59,8 +59,8 @@ export class MarcasService {
       ]);
     }
 
-    await this.marcasRepository.updateCustom(id, data);
-    return { message: 'Marca atualizado com sucesso' };
+    const result = await this.marcasRepository.updateCustom(id, data);
+    return { message: 'Marca atualizado com sucesso', data: result };
   }
 
   async delete(id: number) {

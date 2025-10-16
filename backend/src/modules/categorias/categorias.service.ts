@@ -35,13 +35,15 @@ export class CategoriasService {
   }
 
   @Transactional()
-  create(data: CreateCategoriaDto) {
-    return this.categoriasRepository.save(data);
+  async create(data: CreateCategoriaDto) {
+    const result = await this.categoriasRepository.save(data);
+    return { message: 'Categoria criado com sucesso', data: result };
   }
 
   @Transactional()
-  update(id: number, data: UpdateCategoriaDto) {
-    return this.categoriasRepository.save(data);
+  async update(id: number, data: UpdateCategoriaDto) {
+    const result = await this.categoriasRepository.save(data);
+    return { message: 'Categoria atualizada com sucesso', data: result };
   }
 
   @Transactional()

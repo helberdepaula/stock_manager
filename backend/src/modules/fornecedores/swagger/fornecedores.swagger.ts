@@ -1,4 +1,4 @@
-import { ApiResponseOptions } from '@nestjs/swagger';
+import { ApiResponse, ApiResponseOptions } from '@nestjs/swagger';
 
 export const getlistFornecedoresResponse: ApiResponseOptions = {
   description: 'lista de usuario retornada com sucesso',
@@ -71,6 +71,39 @@ export const updateFornecedor: ApiResponseOptions = {
 
 export const deletesFornecedor: ApiResponseOptions = {
   description: 'Fornecedor deletado com sucesso',
+};
+
+export const listContatoFornecedor: ApiResponseOptions = {
+  description: 'Obtem uma lista de contatos do fornecedor',
+  content: {
+    'application/json': {
+      example: {
+        message: 'btem uma lista de contatos do fornecedor',
+        ...{
+          data: [
+            {
+              id: 8,
+              codigo: '+55',
+              ddd: '62',
+              numero: '982303656',
+            },
+            {
+              id: 9,
+              codigo: '+55',
+              ddd: '62',
+              numero: '982303656',
+            },
+            {
+              id: 10,
+              codigo: '+55',
+              ddd: '62',
+              numero: '982303656',
+            },
+          ],
+        },
+      },
+    },
+  },
 };
 
 export const createrCotnatoFornecedores: ApiResponseOptions = {

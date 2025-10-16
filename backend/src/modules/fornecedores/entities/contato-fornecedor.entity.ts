@@ -23,6 +23,11 @@ export class ContatoFornecedor {
   })
   createdAt: Date | null;
 
+  @Column('integer', {
+    name: 'fornecedor_id',
+  })
+  fornecedor_id: number;
+
   @Column('timestamp with time zone', {
     name: 'updated_at',
     nullable: true,

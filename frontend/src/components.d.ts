@@ -9,8 +9,13 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Authentication: typeof import('./components/Authentication.vue')['default']
+    Cadastro: typeof import('./components/fornecedores/Cadastro.vue')['default']
+    Contato: typeof import('./components/fornecedores/Contato.vue')['default']
+    Edicao: typeof import('./components/fornecedores/Edicao.vue')['default']
+    'ErrorToast ': typeof import('./components/Toast/ErrorToast .vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SucessToast: typeof import('./components/Toast/SucessToast.vue')['default']
   }
 }

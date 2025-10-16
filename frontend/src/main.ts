@@ -4,25 +4,29 @@
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import { registerPlugins } from '@/plugins'
-import { setupTokenRefreshInterceptor } from '@/services/token-refresh'
-import { useAuthStore } from '@/store/auth'
-import 'unfonts.css'
+// Plugins
+import { registerPlugins } from "@/plugins";
 
-const pinia = createPinia()
-const app = createApp(App)
+// Components
+import App from "./App.vue";
 
+// Composables
+import { createApp } from "vue";
+
+// Styles
+import "unfonts.css";
+
+import { createPinia } from "pinia";
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import SucessToast from "./components/Toast/SucessToast.vue";
+
+const pinia = createPinia();
+
+//presistindo no localStorage
+pinia.use(piniaPluginPersistedstate);
+
+const app = createApp(App);
 app.use(pinia)
-registerPlugins(app)
+registerPlugins(app);
 
-setupTokenRefreshInterceptor()
-
-const authStore = useAuthStore()
-if (authStore.token && !authStore.currentUser) {
-  authStore.loadProfile()
-}
-
-app.mount('#app')
+app.mount("#app");

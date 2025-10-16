@@ -132,6 +132,22 @@ export class FornecedoresService {
     return { message: 'Usuário removido com sucesso' };
   }
 
+  async getContatoFornecedor(id: number) {
+    const fornecedor = await this.fornecedoreRespository.findByPK(id);
+
+    if (!fornecedor) {
+      throw new ConflictException([
+        'O fornecedor informado não existe ou foi removido do sistema.',
+      ]);
+    }
+    const result = await this.contatoFornecedorRepository.findAll(+id);
+    return {
+      data: result.map((item) => {
+        return item.contato;
+      }),
+    };
+  }
+
   @Transactional()
   async createContato(id: number, data: createFornecedorContatoDto) {
     const fornecedor = await this.fornecedoreRespository.findByPK(id);

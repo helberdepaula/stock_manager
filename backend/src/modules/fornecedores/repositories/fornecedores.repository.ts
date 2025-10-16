@@ -25,7 +25,11 @@ export class FornecedoresRepository extends Repository<Fornecedores> {
 
   async findByPK(id: number): Promise<Fornecedores | null> {
     return this.repository.findOne({
-      relations: ['endereco'],
+      relations: [
+        'endereco',
+        'endereco.municipio',
+        'endereco.municipio.estado',
+      ],
       where: { id, status: 'ACTIVE' },
     });
   }
@@ -37,7 +41,7 @@ export class FornecedoresRepository extends Repository<Fornecedores> {
     const whereParam: any = { status: 'ACTIVE' };
 
     if (filter.cnpj) {
-      whereParam.email = filter.cnpj?.replace(/\D/g, '');
+      whereParam.cnpj = filter.cnpj?.replace(/\D/g, '');
     }
 
     if (filter.nome) {

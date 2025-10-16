@@ -129,6 +129,28 @@ export class FornecedoresController {
     return this.fornecedoresService.remove(+id);
   }
 
+  @Get('/contato/:id')
+  @ApiOperation({
+    summary: 'Obtem uma lista de contatos do fornecedor',
+  })
+  @ApiResponse({
+    status: 200,
+    ...createrCotnatoFornecedores,
+  })
+  @ApiNotFoundResponse({
+    description: 'Fornecedor não encontrado ou foi removido da base de dados',
+  })
+  @ApiUnauthorizedResponse({ description: 'Não autorizado' })
+  @ApiForbiddenResponse({
+    description: 'Permissão insuficiente',
+  })
+  @UseGuards(createPermissionsGuard('READ'))
+  async getcontatoForencedor(
+    @Param('id') id: string,
+  ) {
+    return this.fornecedoresService.getContatoFornecedor(+id);
+  }
+
   @Post('/contato/:id')
   @ApiOperation({
     summary: 'Cria um novo contato para o fornecedor',

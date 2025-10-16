@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './modules/users/users.module';
@@ -18,7 +18,6 @@ import { FornecedoresModule } from './modules/fornecedores/fornecedores.module';
 import { ProdutosModule } from './modules/produtos/produtos.module';
 import { PedidosModule } from './modules/pedidos/pedidos.module';
 import { EstoquesModule } from './modules/estoques/estoques.module';
-import { LoggerMiddleware } from './logger.middleware';
 
 @Module({
   imports: [
@@ -53,8 +52,4 @@ import { LoggerMiddleware } from './logger.middleware';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('*'); // Aplica para todas as rotas
-  }
-}
+export class AppModule {}
